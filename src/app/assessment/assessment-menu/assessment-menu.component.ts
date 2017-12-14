@@ -81,11 +81,11 @@ export class AssessmentMenuComponent implements OnInit {
   }
 
   getBreadcrumbs(dirId: number) {
+    console.log('get');
     this.indexedDbService.getDirectory(dirId).then(
       resultDir => {
-        if (resultDir.id != this.directory.id) {
-          this.breadCrumbs.unshift(resultDir);
-        }
+        this.breadCrumbs.unshift(resultDir);
+        console.log(this.breadCrumbs);
         if (resultDir.parentDirectoryId) {
           this.getBreadcrumbs(resultDir.parentDirectoryId);
         }

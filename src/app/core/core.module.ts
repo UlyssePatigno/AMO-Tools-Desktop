@@ -36,7 +36,8 @@ import { ReportRollupModule } from '../report-rollup/report-rollup.module';
 import { VersionModalComponent } from '../version-modal/version-modal.component';
 import { UpdateModalComponent } from '../update-modal/update-modal.component';
 import {AcknowledgmentsPageComponent} from "../acknowledgments-page/acknowledgments-page.component";
-
+import { DashboardTabsComponent } from '../dashboard/dashboard-tabs/dashboard-tabs.component';
+import { DashboardService } from '../dashboard/dashboard.service';
 @NgModule({
   declarations: [
     CoreComponent,
@@ -50,7 +51,8 @@ import {AcknowledgmentsPageComponent} from "../acknowledgments-page/acknowledgme
     ContactPageComponent,
     AcknowledgmentsPageComponent,
     UpdateModalComponent,
-    VersionModalComponent
+    VersionModalComponent,
+    DashboardTabsComponent
   ],
   imports: [
     CommonModule,
@@ -72,7 +74,8 @@ import {AcknowledgmentsPageComponent} from "../acknowledgments-page/acknowledgme
     ReportRollupModule
   ],
   providers: [
-    AssessmentService
+    AssessmentService,
+    DashboardService
   ]
 })
 

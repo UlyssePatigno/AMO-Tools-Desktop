@@ -16,6 +16,7 @@ import { ImportExportService } from '../shared/import-export/import-export.servi
 import { WallLossesSurface, GasLoadChargeMaterial, LiquidLoadChargeMaterial, SolidLoadChargeMaterial, AtmosphereSpecificHeat, FlueGasMaterial, SolidLiquidFlueGasMaterial } from '../shared/models/materials';
 import { ReportRollupService } from '../report-rollup/report-rollup.service';
 import { SettingsService } from '../settings/settings.service';
+import { DashboardService } from './dashboard.service';
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -32,7 +33,7 @@ export class DashboardComponent implements OnInit {
   showLandingScreen: boolean;
 
   newDirEventToggle: boolean = false;
-  dashboardView: string = 'landing-screen';
+  dashboardView: string;
   goCalcHome: boolean = false;
   @ViewChild('deleteModal') public deleteModal: ModalDirective;
   @ViewChild('deleteItemsModal') public deleteItemsModal: ModalDirective;
@@ -50,10 +51,10 @@ export class DashboardComponent implements OnInit {
   suiteDbInit: boolean = false;
   isModalOpen: boolean = false;
   createAssessment: boolean = false;
-
+  aboutTab:string;
   constructor(private indexedDbService: IndexedDbService, private formBuilder: FormBuilder, private assessmentService: AssessmentService, private toastyService: ToastyService,
     private toastyConfig: ToastyConfig, private jsonToCsvService: JsonToCsvService, private suiteDbService: SuiteDbService, private importExportService: ImportExportService,
-    private reportRollupService: ReportRollupService, private settingsService: SettingsService) {
+    private reportRollupService: ReportRollupService, private settingsService: SettingsService, private dashboardService: DashboardService) {
     this.toastyConfig.theme = 'bootstrap';
     this.toastyConfig.position = 'bottom-right';
     this.toastyConfig.limit = 1;
@@ -83,6 +84,15 @@ export class DashboardComponent implements OnInit {
 
     this.assessmentService.createAssessment.subscribe(val => {
       this.createAssessment = val;
+    })
+
+    this.dashboardService.mainTab.subscribe(val => {
+      this.dashboardView = val;
+      console.log(this.dashboardView);
+    })
+
+    this.dashboardService.aboutTab.subscribe(val => {
+      this.aboutTab = val;
     })
   }
 

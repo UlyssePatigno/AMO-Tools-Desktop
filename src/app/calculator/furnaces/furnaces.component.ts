@@ -1,4 +1,5 @@
 import { Component, OnInit, Input, SimpleChanges } from '@angular/core';
+import { StandaloneService } from '../standalone.service';
 
 @Component({
   selector: 'app-furnaces',
@@ -6,27 +7,24 @@ import { Component, OnInit, Input, SimpleChanges } from '@angular/core';
   styleUrls: ['./furnaces.component.css']
 })
 export class FurnacesComponent implements OnInit {
-  @Input()
   selectedTool: string;
-  @Input()
-  goCalcHome: boolean;
 
   firstChange: boolean = true;
-  constructor() { }
+  constructor(private standaloneService: StandaloneService) { }
 
   ngOnInit() {
-    if (!this.selectedTool) {
-      this.selectedTool = 'none';
-    }
+    // if (!this.selectedTool) {
+    //   this.selectedTool = 'none';
+    // }
+    this.standaloneService.furnaceTab.subscribe(val => {
+      this.selectedTool = val;
+    })
   }
 
-  ngOnChanges(changes: SimpleChanges) {
-    if (!this.firstChange) {
-      this.selectedTool = 'none';
-    }else{
-      this.firstChange = false;
-    }
+  changeCalcTab(str: string){
+    this.standaloneService.furnaceTab.next(str);
   }
+
 
   showTool(str: string) {
     this.selectedTool = str;

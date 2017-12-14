@@ -1153,6 +1153,10 @@ Banner
   .banner.phast {
     background: #BF3D00;
   }
+  .banner.dashboard{
+    background: #616A6B;
+  }
+
 .banner:after {
   display: table;
   content: "";

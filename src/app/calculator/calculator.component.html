@@ -1,5 +1,5 @@
-<app-pumps [selectedTool]="selectedTool" [goCalcHome]="goCalcHome" *ngIf="selectedCalculator == 'pumps'"></app-pumps>
-<app-furnaces [selectedTool]="selectedTool" [goCalcHome]="goCalcHome" *ngIf="selectedCalculator == 'furnaces'"></app-furnaces>
+<app-pumps *ngIf="selectedCalculator == 'pumps'"></app-pumps>
+<app-furnaces *ngIf="selectedCalculator == 'furnaces'"></app-furnaces>
 <app-motors [selectedTool]="selectedTool" [goCalcHome]="goCalcHome" *ngIf="selectedCalculator == 'motors'"></app-motors>
 <app-fans *ngIf="selectedCalculator == 'fans'"></app-fans>
 <app-steam *ngIf="selectedCalculator == 'steam'"></app-steam>

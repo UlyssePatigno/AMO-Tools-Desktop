@@ -1,4 +1,5 @@
 import { Component, OnInit, Input, SimpleChanges } from '@angular/core';
+import { StandaloneService } from '../standalone.service';
 
 
 @Component({
@@ -7,26 +8,23 @@ import { Component, OnInit, Input, SimpleChanges } from '@angular/core';
   styleUrls: ['./pumps.component.css']
 })
 export class PumpsComponent implements OnInit {
-  @Input()
+
   selectedTool: string;
-  @Input()
-  goCalcHome: boolean;
 
   firstChange: boolean = true;
-  constructor() { }
+  constructor(private standaloneService: StandaloneService) { }
 
   ngOnInit() {
-    if (!this.selectedTool) {
-      this.selectedTool = 'none';
-    }
+    // if (!this.selectedTool) {
+    //   this.selectedTool = 'none';
+    // }
+    this.standaloneService.pumpTab.subscribe(val => {
+      this.selectedTool = val;
+    })
   }
 
-  ngOnChanges(changes: SimpleChanges) {
-    if (!this.firstChange) {
-      this.selectedTool = 'none';
-    }else{
-      this.firstChange = false;
-    }
+  changeCalcTab(str: string){
+    this.standaloneService.pumpTab.next(str);
   }
 
   showTool(str: string) {

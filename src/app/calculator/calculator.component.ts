@@ -1,4 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter, SimpleChanges } from '@angular/core';
+import { DashboardService } from '../dashboard/dashboard.service';
 
 @Component({
   selector: 'app-calculator',
@@ -15,7 +16,7 @@ export class CalculatorComponent implements OnInit {
 
   selectedTool: string;
   isFirstChange: boolean = true;
-  constructor() { }
+  constructor(private dashboardService: DashboardService) { }
 
   ngOnChanges(changes: SimpleChanges) {
     if (!this.isFirstChange) {
@@ -28,6 +29,9 @@ export class CalculatorComponent implements OnInit {
 
   ngOnInit() {
     this.selectedTool = 'none';
+    this.dashboardService.calcTab.subscribe(val => {
+      this.selectedCalculator = val;
+    })
   }
 
   showTool(calc: string, tool: string) {

@@ -1,0 +1,17 @@
+ul{
+    margin: 0px;
+    padding: 0px;
+}
+
+.pill-row{
+    height: 100%;
+}
+
+.btn-dashboard{
+    height: 100%;
+}
+
+.tab-col{
+    padding-left: 0px;
+    padding-right: 0px;
+}

@@ -1,0 +1,67 @@
+<div class="banner row dashboard">
+  <div class="col-3">
+    <div class="pull-left">
+      <div class="title">
+        <h1>BPEATS</h1>
+        <!-- <small>Last modified: {{assessment.modifiedDate | date:'medium'}}</small> -->
+      </div>
+    </div>
+  </div>
+
+  <div class="col-6">
+    <div class="row justify-content-center align-items-center pill-row">
+      <ul class="pills-nav">
+        <li [ngClass]="{'active': mainTab == 'landing-screen'}" (click)="changeTab('landing-screen')">
+          <span>Home</span>
+        </li>
+        <li [ngClass]="{'active': mainTab == 'assessment-dashboard'}" (click)="changeTab('assessment-dashboard')">
+          <span>Assessments</span>
+        </li>
+        <li [ngClass]="{'active': mainTab == 'calculator'}" (click)="changeTab('calculator')">
+          <span>Calculators</span>
+        </li>
+        <li [ngClass]="{'active': mainTab == 'about'}" (click)="changeTab('about')">
+          <span>About</span>
+        </li>
+        <li [ngClass]="{'active': mainTab == 'tutorials'}" (click)="changeTab('tutorials')">
+          <span>Tutorials</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+	<div class="col-3">
+      <a (click)="changeTab('settings')" class="btn-dashboard pull-right"><span class="fa fa-gear"></span></a>
+    </div>
+</div>
+<div class="row">
+  <div class="col-12 tab-col">
+    <ul class="tabs subtabs dashboard" *ngIf="mainTab == 'calculator'">
+        <li class="fixed-tab-size" [ngClass]="{'active': calcTab == 'all'}">
+            <a (click)="changeCalcTab('all')">All Calculators</a>
+        </li><!--
+        --><li class="fixed-tab-size" [ngClass]="{'active': calcTab == 'motors'}">
+        <a (click)="changeCalcTab('motors')">Motors</a>
+      </li><!--
+      --><li class="fixed-tab-size" [ngClass]="{'active': calcTab == 'pumps'}">
+        <a (click)="changeCalcTab('pumps')">Pumps</a>
+      </li><!--
+      --><li class="fixed-tab-size" [ngClass]="{'active': calcTab == 'furnaces'}">
+        <a (click)="changeCalcTab('furnaces')">Process Heating</a>
+      </li><!--
+      --><li class="fixed-tab-size" [ngClass]="{'active': calcTab == 'utilities'}">
+        <a (click)="changeCalcTab('utilities')">Utilities</a>
+      </li>
+    </ul>
+    <ul class="tabs subtabs dashboard" *ngIf="mainTab == 'about'">
+      <li class="fixed-tab-size" [ngClass]="{'active': aboutTab == 'about-app'}">
+        <a (click)="changeAboutTab('about-app')">About BPEATS</a>
+      </li><!--
+      --><li class="fixed-tab-size" [ngClass]="{'active':  aboutTab == 'contact'}">
+        <a (click)="changeAboutTab('contact')">Contact</a>
+      </li><!--
+      --><li class="fixed-tab-size" [ngClass]="{'active':  aboutTab == 'acknowledgments'}">
+        <a (click)="changeAboutTab('acknowledgments')">Acknowledgments</a>
+      </li>
+    </ul>
+  </div>
+</div>

@@ -1,4 +1,4 @@
-<div *ngIf="getSelectedTool() == 'none'">
+<div *ngIf="selectedTool == 'none'">
 
   <div class="row">
     <div class="col-10 mx-auto">
@@ -6,26 +6,26 @@
         <h2>Furnace Calculators</h2>
         <ul>
           <li>
-            <a (click)="showTool('o2-enrichment')">O2 Enrichment</a>
+            <a (click)="changeCalcTab('o2-enrichment')">O2 Enrichment</a>
             <p>Use the O2 Enrichment calculator to estimate fuel savings from adjusting the oxygen content of combustion and
               flue gases
             </p>
           </li>
           <li>
-            <a (click)="showTool('efficiency-improvement')">Efficiency Improvement</a>
+            <a (click)="changeCalcTab('efficiency-improvement')">Efficiency Improvement</a>
             <p>
               Use the Efficiency Improvement calculator to explore potential fuel savings from adjusting burner operating conditions.
             </p>
           </li>
           <li>
-            <a (click)="showTool('energy-equivalency')">Energy Equivalency</a>
+            <a (click)="changeCalcTab('energy-equivalency')">Energy Equivalency</a>
             <p>
               Use the Energy Equivalency calculator to learn the required heat input when switching heat source from fuel-fired to electric
               or vice versa.
             </p>
           </li>
           <li>
-            <a (click)="showTool('energy-use')">Flow Calculations Energy Use
+            <a (click)="changeCalcTab('energy-use')">Flow Calculations Energy Use
             </a>
             <p>
               Calculation of flow rates for commonly used gases using data for an orifice type flow meter and heat input calculations when
@@ -35,7 +35,7 @@
             </p>
           </li>
           <li>
-            <a (click)="showTool('pre-assessment')">Pre-assessment / Screening Calculator</a>
+            <a (click)="changeCalcTab('pre-assessment')">Pre-assessment / Screening Calculator</a>
             <p>Enter design or metered energy use data for furnaces within a facility to determine the relative energy use and prioritize
               energy use evaluations and improvements.
             </p>
@@ -46,7 +46,7 @@
   </div>
 </div>
 
-<div class="stand-alone-calc tab-content" *ngIf="getSelectedTool() == 'o2-enrichment'">
+<div class="stand-alone-calc tab-content" *ngIf="selectedTool == 'o2-enrichment'">
   <!-- <div class="row">
     <div class="col-lg-11 mx-auto">
       <h2>Fuel Consumption</h2>
@@ -61,7 +61,7 @@
 </div>
 
 
-<div class="calculator" *ngIf="getSelectedTool() == 'efficiency-improvement'">
+<div class="calculator" *ngIf="selectedTool == 'efficiency-improvement'">
   <div class="row">
     <div class="col-lg-11 mx-auto">
       <h2>Efficiency Improvement Calculator</h2>
@@ -78,7 +78,7 @@
 </div>
 
 
-<div class="calculator" *ngIf="getSelectedTool() == 'energy-equivalency'">
+<div class="calculator" *ngIf="selectedTool == 'energy-equivalency'">
   <div class="row">
     <div class="col-lg-11 mx-auto">
       <h2>Energy Equivalency Calculator</h2>
@@ -91,7 +91,7 @@
   </div>
 </div>
 
-<div class="stand-alone-calc tab-content" *ngIf="getSelectedTool() == 'energy-use'">
+<div class="stand-alone-calc tab-content" *ngIf="selectedTool == 'energy-use'">
   <!-- <div class="row">
     <div class="col-lg-11 mx-auto">
       <h2>Flow Calculations Energy Use</h2>
@@ -105,7 +105,7 @@
 </div>
 
 
-<div class="stand-alone-calc tab-content" *ngIf="getSelectedTool() == 'pre-assessment'">
+<div class="stand-alone-calc tab-content" *ngIf="selectedTool == 'pre-assessment'">
   <!-- <div class="row">
     <div class="col-lg-11 mx-auto">
       <h2>Pre-assessment / Screening</h2>
