@@ -20,10 +20,8 @@
                 [directory]="allDirectories"></app-landing-screen>
             <app-tutorials *ngIf="dashboardView == 'tutorials'"></app-tutorials>
             <app-acknowledgments-page *ngIf="dashboardView == 'acknowledgments-page'"></app-acknowledgments-page>
-            <div *ngIf="dashboardView == 'settings'" class="content-container default-settings">
-                <h2>Default Settings</h2>
-                <app-assessment-settings [directory]="allDirectories" (resetDataEmit)="showDeleteModal($event)" (emitUpdateDirectory)="updateDir()"></app-assessment-settings>
-            </div>
+            <app-assessment-settings *ngIf="dashboardView == 'settings'" [directory]="allDirectories" (resetDataEmit)="showDeleteModal($event)"
+                (emitUpdateDirectory)="updateDir()"></app-assessment-settings>
             <div *ngIf="dashboardView == 'about'">
                 <app-about-page *ngIf="aboutTab == 'about-app'"></app-about-page>
                 <app-contact-page *ngIf="aboutTab == 'contact'"></app-contact-page>

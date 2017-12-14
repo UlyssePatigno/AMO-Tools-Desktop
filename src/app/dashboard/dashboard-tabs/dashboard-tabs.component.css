@@ -15,3 +15,7 @@ ul{
     padding-left: 0px;
     padding-right: 0px;
 }
+
+.btn-dashboard.active{
+    background: rgba(0,0,0,0.5);
+}

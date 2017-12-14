@@ -29,8 +29,8 @@
       </ul>
     </div>
   </div>
-	<div class="col-3">
-      <a (click)="changeTab('settings')" class="btn-dashboard pull-right"><span class="fa fa-gear"></span></a>
+  <div class="col-3 align-items-center" style="padding-right:0px;">
+      <a (click)="changeTab('settings')" class="btn-dashboard pull-right" [ngClass]="{'active': mainTab == 'settings'}"><span class="fa fa-gear" style="padding-top:10px;"></span></a>
     </div>
 </div>
 <div class="row">
