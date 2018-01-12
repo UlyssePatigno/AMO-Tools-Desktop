@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Pipe } from '@angular/core';
 import { PhastService } from '../../phast.service';
 import { PHAST, PhastResults, ShowResultsCategories } from '../../../shared/models/phast/phast';
 import { Settings } from '../../../shared/models/settings';
@@ -24,6 +24,7 @@ export class ReportGraphsComponent implements OnInit {
 
   selectedPhast1: any;
   selectedPhast2: any;
+  baselinePhast: any;
 
   resultsArray: Array<any>;
   modExists: boolean = false;
@@ -44,6 +45,7 @@ export class ReportGraphsComponent implements OnInit {
       this.baselineResults = this.phastResultsService.getResults(this.phast, this.settings);
       this.resultsArray.push({ name: 'Baseline', data: this.baselineResults })
       this.selectedPhast1 = this.resultsArray[0];
+      this.baselinePhast = this.selectedPhast1;
       if (this.phast.modifications) {
         if (this.phast.modifications.length != 0) {
           this.modExists = true;
@@ -58,12 +60,16 @@ export class ReportGraphsComponent implements OnInit {
       this.baselineResults = this.phastResultsService.initResults();
       this.resultsArray.push({ name: 'Baseline', data: this.baselineResults })
       this.selectedPhast1 = this.resultsArray[0];
+      this.baselinePhast = this.selectedPhast1;
     }
     this.phastReportService.baselineChartLabels.subscribe(val => {
       if (val) {
         this.getPieLabels(val);
       }
     })
+
+    //debug
+    console.log("baselinePhast.data = " + this.baselinePhast.data.grossHeatInput);
   }
 
 
