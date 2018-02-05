@@ -1282,7 +1282,7 @@ Banner
 .banner.phast .title {
   color: #fff;
   padding-left: 58px;
-  background: url('../assets/images/ico-phast-diagram.png') no-repeat 14px;
+  /*background: url('../assets/images/ico-phast-diagram.png') no-repeat 14px;*/
   background-size: 31px;
   background-color: #000B13;
 }

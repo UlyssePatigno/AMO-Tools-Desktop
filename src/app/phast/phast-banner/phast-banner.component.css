@@ -18,3 +18,14 @@ ul{
     margin-bottom: -14px;
     color: rgba(255,255,255,.75);
 }
+
+.phast-ico {
+  width: 48px;
+  padding-top: 18px;
+  padding-bottom: 20px;
+  background-color: rgba(0, 0, 0, 0.26);
+}
+
+.phast-assessment {
+  padding-left: 25px;
+}

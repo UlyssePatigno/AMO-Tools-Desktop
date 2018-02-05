@@ -1,14 +1,23 @@
 <div class="banner phast row">
   <div class="col-3">
-    <div class="pull-left">
-      <div *ngIf="assessment" class="title">
-        <h1>{{assessment.name}}</h1>
-        <h2 *ngIf="!settings.customFurnaceName">{{settings.furnaceType}}</h2>
-        <h2 *ngIf="settings.customFurnaceName">{{settings.furnaceType}}:<br>{{settings.customFurnaceName}}</h2>
-        <small>Last modified: {{assessment.modifiedDate | date:'medium'}}</small>
+    <div class="col-12">
+      <div class="row">
+        <!--<div class="pull-left">-->
+          <div class="col-1">
+            <img src="assets/images/ico-phast-diagram.png" class="phast-ico">
+          </div>
+          <div class="col-10">
+            <div *ngIf="assessment" class="phast-assessment">
+              <h1>{{assessment.name}}</h1>
+              <h2 *ngIf="!settings.customFurnaceName">{{settings.furnaceType}}</h2>
+              <h2 *ngIf="settings.customFurnaceName">{{settings.furnaceType}}:<br>{{settings.customFurnaceName}}</h2>
+              <small>Last modified: {{assessment.modifiedDate | date:'medium'}}</small>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
+  <!--</div>-->
 
   <div class="col-6">
     <div class="row justify-content-center align-items-center pill-row">
