@@ -54,10 +54,11 @@ export class PhastBarChartComponent implements OnInit {
   ngOnInit() {
     this.getData(this.results, this.modResults, this.resultCats);
     this.getColors();
+    console.log("chartLabels.length = " + this.chartLabels.length);
+
   }
 
   ngAfterViewInit() {
-
 
     if (!this.printView) {
       if (this.chartContainerWidth > 877) {
@@ -121,7 +122,11 @@ export class PhastBarChartComponent implements OnInit {
       axis: {
         x: {
           type: 'category',
-          categories: this.chartLabels
+          categories: this.chartLabels,
+          tick: {
+            multiline: true,
+            centered: true
+          }
         },
         y: {
           label: {
@@ -186,8 +191,8 @@ export class PhastBarChartComponent implements OnInit {
       d3.selectAll(".print-bar-chart .c3-axis-y-label").style("fill", "#000").style("stroke", "#000");
       d3.selectAll(".print-bar-chart .c3-ygrids").style("stroke", "#B4B2B7").style("stroke-width", "0.5px");
       // d3.selectAll(".print-bar-chart .c3-axis-x g.tick text tspan").style("font-size", "18px").style("fill", "#000").style("stroke", "#000").style("line-height", "20px");
-      d3.selectAll(".print-bar-chart .c3-axis-x g.tick text tspan").style("font-size", "1.2rem").style("fill", "none").style("stroke", "#000").style("line-height", "20px");
-      d3.selectAll(".print-bar-chart .c3-axis-y g.tick text tspan").style("font-size", "1.0rem");
+      // d3.selectAll(".print-bar-chart .c3-axis-x g.tick text tspan").style("font-size", "1.2rem").style("fill", "none").style("stroke", "#000").style("line-height", "20px");
+      // d3.selectAll(".print-bar-chart .c3-axis-y g.tick text tspan").style("font-size", "1.0rem");
       // d3.selectAll(".print-bar-chart .c3-legend-item text").style("font-size", "1.3rem");
     }
     else {
