@@ -4,9 +4,10 @@ import { PHAST, Losses, PhastResults, ShowResultsCategories, Modification } from
 import { Settings } from '../../../../shared/models/settings';
 import { Assessment } from '../../../../shared/models/assessment';
 import { PhastResultsService } from '../../../phast-results.service';
-import { graphColors } from '../graphColors';
+import { graphColors, grayScaleGraphColors } from '../graphColors';
 import { PhastReportService } from '../../phast-report.service';
-
+import * as d3 from 'd3';
+import * as c3 from 'c3';
 @Component({
     selector: 'app-report-graphs-print',
     templateUrl: './report-graphs-print.component.html',
@@ -43,9 +44,17 @@ export class ReportGraphsPrintComponent implements OnInit {
     allNotes: Array<Array<string>>;
     equipmentNotes: string;
 
+    //debug
+    colors: Array<string>;
+
     constructor() { }
 
     ngOnInit() {
+
+        this.colors = new Array<string>();
+        this.colors = grayScaleGraphColors;
+
+
         this._modifications = new Array<Modification>();
         this.assessmentName = this.assessment.name.replace(/\s/g, '');
         this.sankeyPhastOptions = new Array<any>();

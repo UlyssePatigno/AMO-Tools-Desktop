@@ -149,8 +149,21 @@
                     </div>
                 </div>
 
-                <!-- pie charts -->
+                <!-- debug -->
                 <div class="row">
+                    <div class="col-6 print-pie-chart" [ngClass]="{'print-pie-chart-left' : modExists}">
+                        <app-phast-pie-chart [chartIndex]="i" [printView]="true" [chartContainerWidth]="chartContainerWidth" [results]="baselinePhast.data"
+                            [resultCats]="resultCats" [isBaseline]="true" [modExists]="modExists" [graphColors]="colors"></app-phast-pie-chart>
+                    </div>
+                    <div class="col-6 print-pie-chart-right" *ngIf="modExists">
+                        <app-phast-pie-chart [chartIndex]="i" [printView]="true" [chartContainerWidth]="chartContainerWidth" [results]="result.data"
+                            [resultCats]="resultCats" [isBaseline]="false" [modExists]="modExists" [graphColors]="colors"></app-phast-pie-chart>
+                    </div>
+                </div>
+
+                <!-- real version -->
+                <!-- pie charts -->
+                <!-- <div class="row">
                     <div class="col-6 print-pie-chart" [ngClass]="{'print-pie-chart-left' : modExists}">
                         <app-phast-pie-chart [chartIndex]="i" [printView]="true" [chartContainerWidth]="chartContainerWidth" [results]="baselinePhast.data"
                             [resultCats]="resultCats" [isBaseline]="true" [modExists]="modExists"></app-phast-pie-chart>
@@ -159,7 +172,7 @@
                         <app-phast-pie-chart [chartIndex]="i" [printView]="true" [chartContainerWidth]="chartContainerWidth" [results]="result.data"
                             [resultCats]="resultCats" [isBaseline]="false" [modExists]="modExists"></app-phast-pie-chart>
                     </div>
-                </div>
+                </div> -->
 
                 <!-- bar chart title -->
                 <div class="row show-print print-bar-chart-title print-pad-graph-title" *ngIf="modExists">

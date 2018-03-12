@@ -4,10 +4,11 @@ import { PHAST, PhastResults, ShowResultsCategories } from '../../../shared/mode
 import { Settings } from '../../../shared/models/settings';
 import { Assessment } from '../../../shared/models/assessment';
 import { PhastResultsService } from '../../phast-results.service';
-import { graphColors } from './graphColors';
+import { graphColors, grayScaleGraphColors } from './graphColors';
 import { PhastReportService } from '../phast-report.service';
 import { WindowRefService } from '../../../indexedDb/window-ref.service';
-
+import * as d3 from 'd3';
+import * as c3 from 'c3';
 @Component({
   selector: 'app-report-graphs',
   templateUrl: './report-graphs.component.html',
@@ -38,11 +39,17 @@ export class ReportGraphsComponent implements OnInit {
   colors: Array<string>;
   baselineLabels: Array<string>;
   modifiedLabels: Array<string>;
-  // showPrint: boolean = false;
   constructor(private phastService: PhastService, private phastResultsService: PhastResultsService, private phastReportService: PhastReportService, private windowRefService: WindowRefService) { }
 
   ngOnInit() {
-    this.colors = graphColors;
+
+    if (this.showPrint) {
+      this.colors = grayScaleGraphColors;
+    }
+    else {
+      this.colors = graphColors;
+    }
+    // this.colors = graphColors;
     this.resultsArray = new Array<any>();
     this.showResultsCats = this.phastResultsService.getResultCategories(this.settings);
     if (this.phast.losses) {

@@ -2,7 +2,7 @@ import { Component, OnInit, Input, SimpleChanges } from '@angular/core';
 import { ReportRollupService, PhastResultsData } from '../../report-rollup.service';
 import { ConvertUnitsService } from '../../../shared/convert-units/convert-units.service';
 import { Settings } from '../../../shared/models/settings';
-import { graphColors } from '../../../phast/phast-report/report-graphs/graphColors';
+import { graphColors, grayScaleGraphColors } from '../../../phast/phast-report/report-graphs/graphColors';
 import { SigFigsPipe } from '../../../shared/sig-figs.pipe';
 import * as d3 from 'd3';
 import * as c3 from 'c3';

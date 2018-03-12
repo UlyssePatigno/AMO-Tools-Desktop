@@ -2,7 +2,7 @@ import { Component, OnInit, Input, ViewChild, SimpleChanges, ElementRef } from '
 import { ReportRollupService, PhastResultsData } from '../report-rollup.service';
 import { ConvertUnitsService } from '../../shared/convert-units/convert-units.service';
 import { Settings } from 'electron';
-import { graphColors } from '../../phast/phast-report/report-graphs/graphColors';
+import { graphColors, grayScaleGraphColors } from '../../phast/phast-report/report-graphs/graphColors';
 import { SigFigsPipe } from '../../shared/sig-figs.pipe';
 import { SvgToPngService } from '../../shared/svg-to-png/svg-to-png.service';
 import * as d3 from 'd3';
@@ -40,6 +40,10 @@ export class RollupPieChartComponent implements OnInit {
 
   chartContainerHeight: number;
 
+  legendPadding: number;
+  legendTileHeight: number;
+  legendTileWidth: number;
+
   @ViewChild("ngChart") ngChart: ElementRef;
   @ViewChild('btnDownload') btnDownload: ElementRef;
   exportName: string;
@@ -49,17 +53,29 @@ export class RollupPieChartComponent implements OnInit {
   constructor(private svgToPngService: SvgToPngService) { }
 
   ngOnInit() {
-    this.graphColors = graphColors;
+    if (this.printView) {
+      this.graphColors = grayScaleGraphColors;
+    }
+    else {
+      this.graphColors = graphColors;
+    }
   }
 
   ngAfterViewInit() {
     if (this.printView) {
-      this.chartContainerHeight = 310;
-      this.chartContainerWidth = 500;
+      this.chartContainerWidth = 680;
+      this.chartContainerHeight = 350;
+      this.legendPadding = 5;
+      this.legendTileHeight = 25;
+      this.legendTileWidth = 50;
     }
     else {
       this.chartContainerHeight = 280;
+      this.legendPadding = 0;
+      this.legendTileHeight = 13;
+      this.legendTileWidth = 20;
     }
+
     this.initChart();
   }
 
@@ -75,13 +91,14 @@ export class RollupPieChartComponent implements OnInit {
 
     if (this.assessmentType == "phast") {
       if (this.printView) {
+        console.log("printing phast");
         this.ngChart.nativeElement.className = "printing-phast-rollup-pie-chart";
       }
 
     }
     else if (this.assessmentType == "psat") {
       if (this.printView) {
-
+        console.log("printing psat");
         this.ngChart.nativeElement.className = "printing-psat-rollup-pie-chart";
       }
     }
@@ -95,6 +112,16 @@ export class RollupPieChartComponent implements OnInit {
       },
       legend: {
         show: this.showLegend,
+        padding: this.legendPadding,
+        item: {
+          event: {
+            height: 15
+          },
+          tile: {
+            width: this.legendTileWidth,
+            height: this.legendTileHeight
+          }
+        },
         position: 'right'
       },
       color: {
@@ -113,6 +140,9 @@ export class RollupPieChartComponent implements OnInit {
       }
     });
 
+    //debug
+    console.log("this.labels = " + this.labels);
+
     for (let j = 0; j < this.results.length; j++) {
       this.pieChart.load({
         columns: [
@@ -123,8 +153,14 @@ export class RollupPieChartComponent implements OnInit {
     }
 
     if (this.printView) {
-      //formatting chart
-      d3.selectAll(".c3-legend-item text").style("font-size", "13px");
+      //formatting printed chart
+      setTimeout(() => {
+        // d3.selectAll(".printing-psat-rollup-pie-chart .c3-legend-item text").style("font-size", "13px");
+        // d3.selectAll(".printing-phast-rollup-pie-chart .c3-legend-item text").style("font-size", "13px");
+        d3.selectAll(".printing-psat-rollup-pie-chart .c3-legend-item text").style("font-size", "1.2rem");
+        d3.selectAll(".printing-phast-rollup-pie-chart .c3-legend-item text").style("font-size", "1.2rem");
+      }, 500);
+
     }
   }
 
