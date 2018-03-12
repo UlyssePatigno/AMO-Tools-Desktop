@@ -141,7 +141,7 @@ export class RollupPieChartComponent implements OnInit {
     });
 
     //debug
-    console.log("this.labels = " + this.labels);
+    console.log("this.pieChart = " + this.pieChart);
 
     for (let j = 0; j < this.results.length; j++) {
       this.pieChart.load({

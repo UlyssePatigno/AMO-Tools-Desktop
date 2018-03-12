@@ -129,6 +129,8 @@ export class PhastPieChartComponent implements OnInit {
       this.ngChart.nativeElement.className = 'print-pie-chart';
     }
 
+    // let colorScheme = this.graphColors;
+
     //debug
     this.chart = c3.generate({
       bindto: this.ngChart.nativeElement,
@@ -142,13 +144,6 @@ export class PhastPieChartComponent implements OnInit {
         labels: true,
         order: null
       },
-      size: {
-        width: this.chartContainerWidth,
-        height: this.chartContainerHeight
-      },
-      color: {
-        pattern: this.graphColors
-      },
       legend: {
         padding: 25,
         item: {
@@ -161,6 +156,13 @@ export class PhastPieChartComponent implements OnInit {
           }
         },
         position: 'right'
+      },
+      color: {
+        pattern: this.graphColors
+      },
+      size: {
+        width: this.chartContainerWidth,
+        height: this.chartContainerHeight
       },
       tooltip: {
         contents: function (d, defaultTitleFormat, defaultValueFormat, color) {
@@ -181,7 +183,7 @@ export class PhastPieChartComponent implements OnInit {
       })
     }
 
-    // console.log(this.chart);
+    console.log(this.chart);
 
     if (!this.printView) {
       // setTimeout(() => {
