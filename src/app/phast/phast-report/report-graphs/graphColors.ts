@@ -40,24 +40,24 @@ export const graphColors: Array<any> = [
 ];
 
 
-export const grayScaleGraphColors: Array<any> = [
-  'url(#diagonal-stripe-1)',
-  '#bbb',
-  '#fff',
+export const grayScaleGraphColors: Array<string> = [
+  'url("#diagonal-stripe-1")',
+  '#bbbbbb',
+  '#ffffff',
   '#d7191c',
-  'url(#crosshatch)',
-  'url(#lightstripe)',
+  'url("#crosshatch")',
+  'url("#lightstripe")',
   '#ffffbf',
-  'url(#whitecarbon)',
+  'url("#whitecarbon")',
   '#2b83ba',
-  'url(#houndstooth)',
-  'url(#verticalstripe)',
+  'url("#houndstooth")',
+  'url("#verticalstripe")',
   // 'url(#smalldot)',
 
-  'url(#dots-2)',
-  'url(#horizontal-stripe-1)',
-  'url(#circles-1)',
-  'url(#vertical-stripe-2)'
+  'url("#dots-2")',
+  'url("#horizontal-stripe-1")',
+  'url("#circles-1")',
+  'url("#vertical-stripe-2")'
   // 'url(#circles-1)',
 
 ];
