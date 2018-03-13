@@ -74,18 +74,25 @@ export class PhastPieChartComponent implements OnInit {
   window: any;
 
   chart: any;
+  svg: any;
   tmpChartData: Array<any>;
 
 
   constructor(private phastReportService: PhastReportService, private windowRefService: WindowRefService, private svgToPngService: SvgToPngService) { }
 
   ngOnInit() {
-    if (this.printView) {
-      this.graphColors = grayScaleGraphColors;
-    }
-    else {
-      this.graphColors = graphColors;
-    }
+
+    // this.initPatterns();
+    this.graphColors = grayScaleGraphColors;
+    // this.graphColors = graphColors;
+
+
+    // if (this.printView) {
+    //   this.graphColors = grayScaleGraphColors;
+    // }
+    // else {
+    //   this.graphColors = graphColors;
+    // }
   }
 
   ngAfterViewInit() {
@@ -109,9 +116,230 @@ export class PhastPieChartComponent implements OnInit {
     this.getData(this.results, this.resultCats);
     this.initChart();
 
+
+
     if (!this.printView) {
       this.updateChart();
     }
+
+    this.setupPatterns();
+
+
+  }
+
+  setupPatterns() {
+
+    let defs = d3.select("defs");
+
+    //diagonal stripe 1
+    defs.append("pattern").attr('id', 'diagonal-stripe-1')
+      .attr('patternUnits', 'userSpaceOnUse')
+      .attr('width', 10)
+      .attr('height', 10)
+      .append('image')
+      .attr('xlink:href', 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHdpZHRoPScxMCcgaGVpZ2h0PScxMCc+CiAgPHJlY3Qgd2lkdGg9JzEwJyBoZWlnaHQ9JzEwJyBmaWxsPSd3aGl0ZScvPgogIDxwYXRoIGQ9J00tMSwxIGwyLC0yCiAgICAgICAgICAgTTAsMTAgbDEwLC0xMAogICAgICAgICAgIE05LDExIGwyLC0yJyBzdHJva2U9J2JsYWNrJyBzdHJva2Utd2lkdGg9JzEnLz4KPC9zdmc+Cg==')
+      .attr('x', 0)
+      .attr('y', 0)
+      .attr('width', 10)
+      .attr('height', 10);
+
+    //diagonal stripe 2
+    defs.append('pattern').attr('id', 'diagonal-stripe-2')
+      .attr('patternUnits', 'userSpaceOnUse')
+      .attr('width', 10)
+      .attr('height', 10)
+      .append('image')
+      .attr('xlink:href', 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHdpZHRoPScxMCcgaGVpZ2h0PScxMCc+CiAgPHJlY3Qgd2lkdGg9JzEwJyBoZWlnaHQ9JzEwJyBmaWxsPSd3aGl0ZScvPgogIDxwYXRoIGQ9J00tMSwxIGwyLC0yCiAgICAgICAgICAgTTAsMTAgbDEwLC0xMAogICAgICAgICAgIE05LDExIGwyLC0yJyBzdHJva2U9J2JsYWNrJyBzdHJva2Utd2lkdGg9JzInLz4KPC9zdmc+')
+      .attr('x', 0)
+      .attr('y', 0)
+      .attr('width', 10)
+      .attr('height', 10);
+
+    //diagonal stripe 3
+    defs.append('pattern').attr('id', 'diagonal-stripe-3')
+      .attr('patternUnits', 'userSpaceOnUse')
+      .attr('width', 10)
+      .attr('height', 10)
+      .append('image')
+      .attr('xlink:href', 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHdpZHRoPScxMCcgaGVpZ2h0PScxMCc+CiAgPHJlY3Qgd2lkdGg9JzEwJyBoZWlnaHQ9JzEwJyBmaWxsPSd3aGl0ZScvPgogIDxwYXRoIGQ9J00tMSwxIGwyLC0yCiAgICAgICAgICAgTTAsMTAgbDEwLC0xMAogICAgICAgICAgIE05LDExIGwyLC0yJyBzdHJva2U9J2JsYWNrJyBzdHJva2Utd2lkdGg9JzMnLz4KPC9zdmc+')
+      .attr('x', 0)
+      .attr('y', 0)
+      .attr('width', 10)
+      .attr('height', 10);
+
+    //diagonal stripe 4
+    defs.append('pattern').attr('id', 'diagonal-stripe-4')
+      .attr('patternUnits', 'userSpaceOnUse')
+      .attr('width', 10)
+      .attr('height', 10)
+      .append('image')
+      .attr('xlink:href', 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHdpZHRoPScxMCcgaGVpZ2h0PScxMCc+CiAgPHJlY3Qgd2lkdGg9JzEwJyBoZWlnaHQ9JzEwJyBmaWxsPSdibGFjaycvPgogIDxwYXRoIGQ9J00tMSwxIGwyLC0yCiAgICAgICAgICAgTTAsMTAgbDEwLC0xMAogICAgICAgICAgIE05LDExIGwyLC0yJyBzdHJva2U9J3doaXRlJyBzdHJva2Utd2lkdGg9JzMnLz4KPC9zdmc+')
+      .attr('x', 0)
+      .attr('y', 0)
+      .attr('width', 10)
+      .attr('height', 10);
+
+    //diagonal stripe 5
+    defs.append('pattern').attr('id', 'diagonal-stripe-5')
+      .attr('patternUnits', 'userSpaceOnUse')
+      .attr('width', 10)
+      .attr('height', 10)
+      .append('image')
+      .attr('xlink:href', 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHdpZHRoPScxMCcgaGVpZ2h0PScxMCc+CiAgPHJlY3Qgd2lkdGg9JzEwJyBoZWlnaHQ9JzEwJyBmaWxsPSdibGFjaycvPgogIDxwYXRoIGQ9J00tMSwxIGwyLC0yCiAgICAgICAgICAgTTAsMTAgbDEwLC0xMAogICAgICAgICAgIE05LDExIGwyLC0yJyBzdHJva2U9J3doaXRlJyBzdHJva2Utd2lkdGg9JzInLz4KPC9zdmc+')
+      .attr('x', 0)
+      .attr('y', 0)
+      .attr('width', 10)
+      .attr('height', 10);
+
+    //diagonal stripe 6
+    defs.append('pattern').attr('id', 'diagonal-stripe-6')
+      .attr('patternUnits', 'userSpaceOnUse')
+      .attr('width', 10)
+      .attr('height', 10)
+      .append('image')
+      .attr('xlink:href', 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHdpZHRoPScxMCcgaGVpZ2h0PScxMCc+CiAgPHJlY3Qgd2lkdGg9JzEwJyBoZWlnaHQ9JzEwJyBmaWxsPSdibGFjaycvPgogIDxwYXRoIGQ9J00tMSwxIGwyLC0yCiAgICAgICAgICAgTTAsMTAgbDEwLC0xMAogICAgICAgICAgIE05LDExIGwyLC0yJyBzdHJva2U9J3doaXRlJyBzdHJva2Utd2lkdGg9JzEnLz4KPC9zdmc+')
+      .attr('x', 0)
+      .attr('y', 0)
+      .attr('width', 10)
+      .attr('height', 10);
+
+
+    //circles 1
+    defs.append('pattern').attr('id', 'circles-1')
+      .attr('patternUnits', 'userSpaceOnUse')
+      .attr('width', 10)
+      .attr('height', 10)
+      .append('image')
+      .attr('xlink:href', 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHdpZHRoPScxMCcgaGVpZ2h0PScxMCc+CiAgPHJlY3Qgd2lkdGg9JzEwJyBoZWlnaHQ9JzEwJyBmaWxsPSJ3aGl0ZSIgLz4KICA8Y2lyY2xlIGN4PSIxIiBjeT0iMSIgcj0iMSIgZmlsbD0iYmxhY2siLz4KPC9zdmc+')
+      .attr('x', 0)
+      .attr('y', 0)
+      .attr('width', 10)
+      .attr('height', 10);
+
+
+    //circles 4
+    defs.append('pattern').attr('id', 'circles-4')
+      .attr('patternUnits', 'userSpaceOnUse')
+      .attr('width', 10)
+      .attr('height', 10)
+      .append('image')
+      .attr('xlink:href', 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHdpZHRoPScxMCcgaGVpZ2h0PScxMCc+CiAgPHJlY3Qgd2lkdGg9JzEwJyBoZWlnaHQ9JzEwJyBmaWxsPSd3aGl0ZScgLz4KICA8Y2lyY2xlIGN4PScyLjUnIGN5PScyLjUnIHI9JzIuNScgZmlsbD0nYmxhY2snLz4KPC9zdmc+')
+      .attr('x', 0)
+      .attr('y', 0)
+      .attr('width', 10)
+      .attr('height', 10);
+
+
+    //dots 2
+    defs.append('pattern').attr('id', 'dots-2')
+      .attr('patternUnits', 'userSpaceOnUse')
+      .attr('width', 10)
+      .attr('height', 10)
+      .append('image')
+      .attr('xlink:href', 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHdpZHRoPScxMCcgaGVpZ2h0PScxMCc+CiAgPHJlY3Qgd2lkdGg9JzEwJyBoZWlnaHQ9JzEwJyBmaWxsPSd3aGl0ZScgLz4KICA8cmVjdCB4PScwJyB5PScwJyB3aWR0aD0nMicgaGVpZ2h0PScyJyBmaWxsPSdibGFjaycgLz4KPC9zdmc+')
+      .attr('x', 0)
+      .attr('y', 0)
+      .attr('width', 10)
+      .attr('height', 10);
+
+    //smalldot
+    defs.append('pattern').attr('id', 'smalldot')
+      .attr('patternUnits', 'userSpaceOnUse')
+      .attr('width', 10)
+      .attr('height', 10)
+      .append('image')
+      .attr('xlink:href', 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHdpZHRoPSc1JyBoZWlnaHQ9JzUnPgo8cmVjdCB3aWR0aD0nNScgaGVpZ2h0PSc1JyBmaWxsPScjZmZmJy8+CjxyZWN0IHdpZHRoPScxJyBoZWlnaHQ9JzEnIGZpbGw9JyNjY2MnLz4KPC9zdmc+')
+      .attr('x', 0)
+      .attr('y', 0)
+      .attr('width', 10)
+      .attr('height', 10);
+
+
+    //vertical stripe 2
+    defs.append('pattern').attr('id', 'vertical-stripe-2')
+      .attr('patternUnits', 'userSpaceOnUse')
+      .attr('width', 10)
+      .attr('height', 10)
+      .append('image')
+      .attr('xlink:href', 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHdpZHRoPScxMCcgaGVpZ2h0PScxMCc+CiAgPHJlY3Qgd2lkdGg9JzEwJyBoZWlnaHQ9JzEwJyBmaWxsPSd3aGl0ZScgLz4KICA8cmVjdCB4PScwJyB5PScwJyB3aWR0aD0nMicgaGVpZ2h0PScxMCcgZmlsbD0nYmxhY2snIC8+Cjwvc3ZnPg==')
+      .attr('x', 0)
+      .attr('y', 0)
+      .attr('width', 10)
+      .attr('height', 10);
+
+
+    //vertical stripe
+    defs.append("pattern").attr('id', 'verticalstripe')
+      .attr('patternUnits', 'userSpaceOnUse')
+      .attr('width', 10)
+      .attr('height', 10)
+      .append('image')
+      .attr('xlink:href', 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHdpZHRoPSc2JyBoZWlnaHQ9JzQ5Jz4KICA8cmVjdCB3aWR0aD0nMycgaGVpZ2h0PSc1MCcgZmlsbD0nI2ZmZicvPgogIDxyZWN0IHg9JzMnIHdpZHRoPScxJyBoZWlnaHQ9JzUwJyBmaWxsPScjY2NjJy8+Cjwvc3ZnPgo=')
+      .attr('x', 0)
+      .attr('y', 0)
+      .attr('width', 10)
+      .attr('height', 10);
+
+    //houndstooth
+    defs.append('pattern').attr('id', 'houndstooth')
+      .attr('patternUnits', 'userSpaceOnUse')
+      .attr('width', 10)
+      .attr('height', 10)
+      .append('image')
+      .attr('xlink:href', 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0nMTAnIGhlaWdodD0nMTAnIHhtbG5zPSdodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2Zyc+CiAgPHBhdGggZD0nTTAgMEw0IDQnIHN0cm9rZT0nI2FhYScgZmlsbD0nI2FhYScgc3Ryb2tlLXdpZHRoPScxJy8+CiAgPHBhdGggZD0nTTIuNSAwTDUgMi41TDUgNUw5IDlMNSA1TDEwIDVMMTAgMCcgc3Ryb2tlPScjYWFhJyBmaWxsPScjYWFhJyBzdHJva2Utd2lkdGg9JzEnLz4KICA8cGF0aCBkPSdNNSAxMEw1IDcuNUw3LjUgMTAnIHN0cm9rZT0nI2FhYScgZmlsbD0nI2FhYScgc3Ryb2tlLXdpZHRoPScxJy8+Cjwvc3ZnPgo=')
+      .attr('x', 0)
+      .attr('y', 0)
+      .attr('width', 10)
+      .attr('height', 10);
+
+    //lightstripe
+    defs.append('pattern').attr('id', 'lightstripe')
+      .attr('patternUnits', 'userSpaceOnUse')
+      .attr('width', 10)
+      .attr('height', 10)
+      .append('image')
+      .attr('xlink:href', 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHdpZHRoPSc1JyBoZWlnaHQ9JzUnPgogIDxyZWN0IHdpZHRoPSc1JyBoZWlnaHQ9JzUnIGZpbGw9J3doaXRlJy8+CiAgPHBhdGggZD0nTTAgNUw1IDBaTTYgNEw0IDZaTS0xIDFMMSAtMVonIHN0cm9rZT0nIzg4OCcgc3Ryb2tlLXdpZHRoPScxJy8+Cjwvc3ZnPg==')
+      .attr('x', 0)
+      .attr('y', 0)
+      .attr('width', 10)
+      .attr('height', 10);
+
+
+    //crosshatch
+    defs.append('pattern').attr('id', 'crosshatch')
+      .attr('patternUnits', 'userSpaceOnUse')
+      .attr('width', 10)
+      .attr('height', 10)
+      .append('image')
+      .attr('xlink:href', 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHdpZHRoPSc4JyBoZWlnaHQ9JzgnPgogIDxyZWN0IHdpZHRoPSc4JyBoZWlnaHQ9JzgnIGZpbGw9JyNmZmYnLz4KICA8cGF0aCBkPSdNMCAwTDggOFpNOCAwTDAgOFonIHN0cm9rZS13aWR0aD0nMC41JyBzdHJva2U9JyNhYWEnLz4KPC9zdmc+Cg==')
+      .attr('x', 0)
+      .attr('y', 0)
+      .attr('width', 10)
+      .attr('height', 10);
+
+    //horizontal stripe 1
+    defs.append('pattern').attr('id', 'horizontal-stripe-1')
+      .attr('patternUnits', 'userSpaceOnUse')
+      .attr('width', 10)
+      .attr('height', 10)
+      .append('image')
+      .attr('xlink:href', 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHdpZHRoPScxMCcgaGVpZ2h0PScxMCc+CiAgPHJlY3Qgd2lkdGg9JzEwJyBoZWlnaHQ9JzEwJyBmaWxsPSd3aGl0ZScgLz4KICA8cmVjdCB4PScwJyB5PScwJyB3aWR0aD0nMTAnIGhlaWdodD0nMScgZmlsbD0nYmxhY2snIC8+Cjwvc3ZnPg==')
+      .attr('x', 0)
+      .attr('y', 0)
+      .attr('width', 10)
+      .attr('height', 10);
+
+    //whitecarbon
+    defs.append('pattern').attr('id', 'whitecarbon')
+      .attr('patternUnits', 'userSpaceOnUse')
+      .attr('width', 10)
+      .attr('height', 10)
+      .append('image')
+      .attr('xlink:href', 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHhtbG5zOnhsaW5rPSdodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rJyB3aWR0aD0nNicgaGVpZ2h0PSc2Jz4KICA8cmVjdCB3aWR0aD0nNicgaGVpZ2h0PSc2JyBmaWxsPScjZWVlZWVlJy8+CiAgPGcgaWQ9J2MnPgogICAgPHJlY3Qgd2lkdGg9JzMnIGhlaWdodD0nMycgZmlsbD0nI2U2ZTZlNicvPgogICAgPHJlY3QgeT0nMScgd2lkdGg9JzMnIGhlaWdodD0nMicgZmlsbD0nI2Q4ZDhkOCcvPgogIDwvZz4KICA8dXNlIHhsaW5rOmhyZWY9JyNjJyB4PSczJyB5PSczJy8+Cjwvc3ZnPg==')
+      .attr('x', 0)
+      .attr('y', 0)
+      .attr('width', 10)
+      .attr('height', 10);
   }
 
 
@@ -183,7 +411,7 @@ export class PhastPieChartComponent implements OnInit {
       })
     }
 
-    console.log(this.chart);
+    // console.log(this.chart);
 
     if (!this.printView) {
       // setTimeout(() => {
@@ -243,6 +471,12 @@ export class PhastPieChartComponent implements OnInit {
       // d3.selectAll(".pie-chart .c3-legend-item rect").attr("height", "18");
       d3.selectAll(".print-pie-chart .c3-chart-arc path").attr('stroke', '#666');
     }
+
+    // setTimeout(() => {
+    //   d3.selectAll('.c3-arc-charge').style('fill', 'url(#diagonal-stripe-1)');
+    //   d3.selectAll('.c3-arc-flue').style('fill', 'url(#verticalstripe)');
+    // }, 500);
+
   }
 
   updateChart() {

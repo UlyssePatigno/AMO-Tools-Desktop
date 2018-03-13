@@ -40,7 +40,7 @@ export class PhastReportComponent implements OnInit {
 
   ngOnInit() {
     this.createdDate = new Date();
-    if(this.settings){
+    if (this.settings) {
       if (!this.settings.energyResultUnit) {
         this.settings = this.settingsService.setEnergyResultUnitSetting(this.settings);
       }
@@ -65,12 +65,12 @@ export class PhastReportComponent implements OnInit {
 
     this.phastReportService.showPrint.subscribe(printVal => {
       this.showPrintDiv = printVal;
-      if(printVal == true){
+      if (printVal == true) {
         setTimeout(() => {
           this.showPrint = printVal;
-        },20)
-      }else{
-         this.showPrint = printVal;
+        }, 20)
+      } else {
+        this.showPrint = printVal;
       }
     });
   }
@@ -128,10 +128,12 @@ export class PhastReportComponent implements OnInit {
 
 
   print() {
-    console.log('clicked');
-    //when print clicked set show print value to true
+    // let win = this.windowRefService.nativeWindow;
+    // let doc = this.windowRefService.getDoc();
+    // win.print();
+    //this.printView = true;
     this.phastReportService.showPrint.next(true);
-    
+
 
     //eventually add logic for modal or something to say "building print view"
 
@@ -143,9 +145,30 @@ export class PhastReportComponent implements OnInit {
       win.print();
       //after printing hide content again
       this.phastReportService.showPrint.next(false);
-    }, 2000)
-    // let win = this.windowRefService.nativeWindow;
-    // let doc = this.windowRefService.getDoc();
-    // win.print();
+      this.showPrint = false;
+    }, 5000);
   }
+
+
+  // print() {
+  //   console.log('clicked');
+  //   //when print clicked set show print value to true
+  //   this.phastReportService.showPrint.next(true);
+
+
+  //   //eventually add logic for modal or something to say "building print view"
+
+  //   //set timeout for delay to print call. May want to do this differently later but for now should work
+  //   //10000000 is excessive, put it at whatever you want
+  //   setTimeout(() => {
+  //     let win = this.windowRefService.nativeWindow;
+  //     let doc = this.windowRefService.getDoc();
+  //     win.print();
+  //     //after printing hide content again
+  //     this.phastReportService.showPrint.next(false);
+  //   }, 5000)
+  //   // let win = this.windowRefService.nativeWindow;
+  //   // let doc = this.windowRefService.getDoc();
+  //   // win.print();
+  // }
 }

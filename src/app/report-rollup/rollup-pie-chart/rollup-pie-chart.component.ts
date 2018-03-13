@@ -85,20 +85,17 @@ export class RollupPieChartComponent implements OnInit {
     }
   }
 
-
   initChart() {
     let currentChart;
 
     if (this.assessmentType == "phast") {
       if (this.printView) {
-        console.log("printing phast");
         this.ngChart.nativeElement.className = "printing-phast-rollup-pie-chart";
       }
 
     }
     else if (this.assessmentType == "psat") {
       if (this.printView) {
-        console.log("printing psat");
         this.ngChart.nativeElement.className = "printing-psat-rollup-pie-chart";
       }
     }
