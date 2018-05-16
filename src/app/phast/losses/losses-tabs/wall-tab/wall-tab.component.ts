@@ -31,14 +31,20 @@ export class WallTabComponent implements OnInit {
   ngOnInit() {
     this.setNumLosses();
     this.lossSubscription = this.lossesService.updateTabs.subscribe(val => {
+      // console.log('subscription running');
+      console.log('lossSubscription val = ' + val);
       this.setNumLosses();
       this.missingData = this.checkMissingData();
       this.isDifferent = this.checkDifferent();
+      console.log('this.missingData = ' + this.missingData);
+      console.log('this.isDifferent = ' + this.isDifferent);
       this.setBadgeClass();
     })
 
     this.compareSubscription = this.wallLossCompareService.inputError.subscribe(val => {
       this.inputError = val;
+      // console.log('compareSubscription val = ' + val);
+      console.log('this.inputError = ' + this.inputError);
       this.setBadgeClass();
     })
 
@@ -53,6 +59,7 @@ export class WallTabComponent implements OnInit {
   setBadgeClass() {
     let badgeStr: Array<string> = ['success'];
     if (this.missingData) {
+      // console.log('missingData is TRUE');
       badgeStr = ['missing-data'];
     } else if (this.inputError) {
       badgeStr = ['input-error'];
@@ -73,9 +80,15 @@ export class WallTabComponent implements OnInit {
   checkMissingData(): boolean {
     let testVal = false;
     if (this.wallLossCompareService.baselineWallLosses) {
+      // console.log('wallLossComapreService.baslineWallLosses is TRUE');
       this.wallLossCompareService.baselineWallLosses.forEach(loss => {
         if (this.checkLossValid(loss) == false) {
+          // console.log("loss = ");
+          // console.log(loss);
           testVal = true;
+          console.log('baselineWallLosses testVal = true');
+          // this.missingData = true;
+          // this.setBadgeClass();
         }
       })
     }
@@ -83,6 +96,7 @@ export class WallTabComponent implements OnInit {
       this.wallLossCompareService.modifiedWallLosses.forEach(loss => {
         if (this.checkLossValid(loss) == false) {
           testVal = true;
+          console.log('modifiedWallLosses testVal = true');
         }
       })
     }
@@ -91,15 +105,20 @@ export class WallTabComponent implements OnInit {
 
 
   checkLossValid(loss: WallLoss) {
+    // console.log('checkLossValid');
     let tmpForm: FormGroup = this.wallLossesService.getWallLossForm(loss);
+    // console.log("tmpForm status = " + tmpForm.status);
+    // console.log(tmpForm);
     if (tmpForm.status == 'VALID') {
       return true;
     } else {
+      // console.log('loss valid is false');
       return false;
     }
   }
 
   checkDifferent() {
+    // console.log('checkDifferent()');
     if (this.wallLossCompareService.baselineWallLosses && this.wallLossCompareService.modifiedWallLosses) {
       return this.wallLossCompareService.compareAllLosses();
     }

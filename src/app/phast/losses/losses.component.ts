@@ -113,7 +113,9 @@ export class LossesComponent implements OnInit {
       }
     }
 
-    this.phastCompareService.setCompareVals(this.phast, this.modificationIndex);
+    if (!this.inSetup) {
+      this.phastCompareService.setCompareVals(this.phast, this.modificationIndex);
+    }
     this.saved.emit(true);
     this.toggleCalculate = !this.toggleCalculate;
     if (this.phast.modifications.length != 0) {

@@ -23,6 +23,7 @@ export class PhastTabsTooltipComponent implements OnInit {
   ngOnChanges(changes: SimpleChanges) {
     if (changes.badgeClass) {
       if (this.badgeClass !== undefined) {
+        console.log('this.badgeClass = ' + this.badgeClass);
         this.setMessage();
       }
     }
@@ -30,6 +31,7 @@ export class PhastTabsTooltipComponent implements OnInit {
 
 
   setMessage() {
+    console.log('badgeClass = ' + this.badgeClass);
     if (this.badgeClass == 'input-error') {
       this.message = "input error";
     }

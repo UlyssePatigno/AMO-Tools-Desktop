@@ -86,6 +86,9 @@ export class WallLossesFormComponent implements OnInit {
   }
   //check iputs for errors
   checkInputError(bool?: boolean) {
+
+    // console.log('ambientTemp = ');
+    // console.log(this.wallLossesForm.controls.ambientTemp);
     if (!bool) {
       this.startSavePolling();
     }
