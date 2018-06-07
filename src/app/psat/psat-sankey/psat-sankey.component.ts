@@ -135,9 +135,17 @@ export class PsatSankeyComponent implements OnInit {
 
 
   makeSankey() {
-    let tmpInputs = JSON.parse(JSON.stringify(this.psat.inputs));
-    let results = this.psatService.resultsExisting(tmpInputs, this.settings);
-    this.sankey(results);
+    // let tmpInputs = JSON.parse(JSON.stringify(this.psat.inputs));
+    // let results = this.psatService.resultsExisting(tmpInputs, this.settings);
+    // this.sankey(results);
+
+    if (!this.isBaseline) {
+      console.log('report sankey, this.selected results = ');
+      console.log(this.selectedResults);
+      console.log('this.selectedInputs = ');
+      console.log(this.selectedInputs);
+    }
+    this.sankey(this.selectedResults);
   }
 
 

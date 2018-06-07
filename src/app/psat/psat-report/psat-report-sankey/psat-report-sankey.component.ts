@@ -48,8 +48,13 @@ export class PsatReportSankeyComponent implements OnInit {
       this.modExists = true;
       this.psat.modifications.forEach(mod => {
         this.psatOptions.push({name: mod.psat.name, psat: mod.psat});
+        this.psat2 = this.psatOptions[1];
+        console.log('psat1 = ');
+        console.log(this.psat1);
+        console.log('psat2 = ');
+        console.log(this.psat2);
       });
-      this.psat2 = this.psatOptions[1];
+      // this.psat2 = this.psatOptions[1];
     }
   }
 

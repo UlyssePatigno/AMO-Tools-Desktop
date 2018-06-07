@@ -63,6 +63,9 @@ export class PsatReportComponent implements OnInit {
   constructor(private psatService: PsatService, private settingsDbService: SettingsDbService, private directoryDbService: DirectoryDbService, private windowRefService: WindowRefService, private settingsService: SettingsService, private psatReportService: PsatReportService) { }
 
   ngOnInit() {
+    console.log('psat-report.component');
+    console.log('psat = ');
+    console.log(this.psat);
     this.initPrintLogic();
     this.createdDate = new Date();
     if (this.assessment.psat && this.settings && !this.psat) {
