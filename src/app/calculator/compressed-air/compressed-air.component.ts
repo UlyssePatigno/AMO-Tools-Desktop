@@ -12,6 +12,8 @@ export class CompressedAirComponent implements OnInit {
   goCalcHome: boolean;
 
   firstChange: boolean = true;
+  data: { flowRate: number };
+
   constructor() { }
 
   ngOnInit() {

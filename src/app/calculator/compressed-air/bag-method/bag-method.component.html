@@ -10,6 +10,16 @@
             <app-bag-method-form [inputs]="inputs" [outputs]="outputs" (calculate)="calculateAnnualConsumption($event)"></app-bag-method-form>
           </div>
         </div>
+        <div class="row">
+          <div class="col-12 btn-container">
+            <button (click)="addRow()" class="btn-add-row">Create Row</button>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12">
+            <app-bag-method-table [data]="data" [settings]="settings"></app-bag-method-table>
+          </div>
+        </div>
       </div>
       <div class="col-6 align-top">
         <div class="help-panel">

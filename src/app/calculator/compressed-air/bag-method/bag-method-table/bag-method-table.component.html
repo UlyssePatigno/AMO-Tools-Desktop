@@ -1,0 +1,14 @@
+<table class="bag-method-table calculator-table">
+  <thead>
+  <tr>
+    <th class="table-col-0">Leak # <br></th>
+    <th class="table-col-1">Flow Rate <br>({{settings.flowMeasurement}})</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let row of rowData; let i = index">
+    <td>{{row.flowRate | number:'1.0-4'}}</td>
+    <td class="delete-row" (click)="deleteRow(i)">Delete</td>
+  </tr>
+  </tbody>
+</table>

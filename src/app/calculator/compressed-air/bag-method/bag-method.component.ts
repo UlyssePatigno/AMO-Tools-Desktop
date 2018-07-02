@@ -11,6 +11,7 @@ export class BagMethodComponent implements OnInit {
 
   inputs: BagMethodInput;
   outputs: BagMethodOutput;
+  data: { flowRate: number };
   constructor() { }
 
   ngOnInit() {
