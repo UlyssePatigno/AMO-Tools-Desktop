@@ -1,3 +1,55 @@
-<p>
-  custom-equipment works!
-</p>
+<div class="row">
+  <div class="col-11 mx-auto pt-3">
+    <div class="card card-item">
+      <div class="card-header">
+        Custom Equipment Management
+      </div>
+      <div class="card-body p-1">
+        <div class="actions d-flex align-items-center">
+          <div class="d-flex flex-wrap">
+            <button class="btn btn-secondary action-btn" [disabled]="!checkSelected()" type="button" (click)="delete()">Delete</button>
+            <button class="btn btn-secondary action-btn" [disabled]="!checkSelected()" type="button" (click)="export()">Export</button>
+            <button class="btn btn-secondary action-btn" type="button" (click)="showImportModal()">Import</button>
+          </div>
+          <label class="ml-auto select-all">
+            <input type="checkbox" [(ngModel)]="isAllSelected" (change)="signalSelectAll()" />
+            <a>Select all folder content</a>
+          </label>
+          <!-- <a (click)="emitImport()">Import...</a> -->
+        </div>
+        <p class="help-text text-center">View, create, or edit your custom equipment.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="row">
+  <div class="col-11 mx-auto">
+    <div class="tab-content content-container">
+      <div class="card-form">
+        <label class="group-label general" (click)="toggleMaterial('motor')">Motors
+          <span class="fa fa-chevron-up pull-right" *ngIf="!showMotor"></span>
+          <span class="fa fa-chevron-down pull-right" *ngIf="showMotor"></span>
+        </label>
+        <a class="click-link pull-right small" (click)="toggleModal('motor')">+Add Custom Motor</a>
+        <!-- <p class="help-text">View, create, edit your custom flue gas materials.</p> -->
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-11 mx-auto">
+    <div class="tab-content content-container">
+      <div class="card-form">
+        <label class="group-label general" (click)="toggleMaterial('pump')">Pumps
+          <span class="fa fa-chevron-up pull-right" *ngIf="!showPump"></span>
+          <span class="fa fa-chevron-down pull-right" *ngIf="showPump"></span>
+        </label>
+        <a class="click-link pull-right small" (click)="toggleModal('pump')">+Add Custom Pump</a>
+        <!-- <p class="help-text">View, create, edit your custom flue gas materials.</p> -->
+      </div>
+    </div>
+  </div>
+</div>
