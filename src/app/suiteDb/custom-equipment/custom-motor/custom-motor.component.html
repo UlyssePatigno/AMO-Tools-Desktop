@@ -3,54 +3,10 @@
     <div class="card card-item">
       <div class="card-header summary-card-header phast">
         <input type="checkbox" [(ngModel)]="motor.selected"> {{motor.id}}
-        <i class="fa fa-edit pull-right" (click)="editMaterial(motor.id)"></i>
+        <i class="fa fa-edit pull-right" (click)="editEQuipment(motor.id)"></i>
       </div>
       <div class="card-body scroll-item summary-card-body">
 
-        <table class="table">
-          <tr>
-            <td>
-              Latent Heat:
-            </td>
-            <td>
-              {{solidChargeMaterial.latentHeat | sigFigs:'6'}}
-              <span *ngIf="settings.unitsOfMeasure == 'Imperial'"> Btu/lb</span>
-              <span *ngIf="settings.unitsOfMeasure == 'Metric'"> kJ/kg</span>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              Melting Point:
-            </td>
-            <td>
-              {{solidChargeMaterial.meltingPoint | sigFigs:'6'}}
-              <span *ngIf="settings.unitsOfMeasure == 'Imperial'"> &#8457;</span>
-              <span *ngIf="settings.unitsOfMeasure == 'Metric'"> &#8451;</span>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              Specific Heat Liquid:
-            </td>
-            <td>
-              {{solidChargeMaterial.specificHeatLiquid | sigFigs:'6'}}
-              <span *ngIf="settings.unitsOfMeasure == 'Imperial'"> Btu/(lb-&#8457;)</span>
-              <span *ngIf="settings.unitsOfMeasure == 'Metric'"> kJ/(kg-&#8451;)</span>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              Specific Heat Solid:
-            </td>
-            <td>
-              {{solidChargeMaterial.specificHeatSolid | sigFigs:'6'}}
-              <span *ngIf="settings.unitsOfMeasure == 'Imperial'"> Btu/(lb-&#8457;)</span>
-              <span *ngIf="settings.unitsOfMeasure == 'Metric'"> kJ/(kg-&#8451;)</span>
-            </td>
-          </tr>
-
-
-        </table>
 
       </div>
       <div class="card-footer summary-card-footer">
@@ -61,13 +17,4 @@
 </div>
 
 
-<!--CREATE material MODAL-->
-<div bsModal #materialModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="materialModalLabel"
-     aria-hidden="true" [config]="{backdrop: 'static'}">
-  <div class="modal-dialog modal-lg">
-    <div class="modal-content tab-content">
-      <app-solid-load-charge-material *ngIf="showModal" (closeModal)="hideMaterialModal($event)" (hideModal)="hideMaterialModal($event)"
-                                      [settings]="settings" [editExistingMaterial]="editExistingMaterial" [existingMaterial]="existingMaterial" [deletingMaterial]="deletingMaterial"></app-solid-load-charge-material>
-    </div>
-  </div>
-</div>
+
