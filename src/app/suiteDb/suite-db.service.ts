@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
-import { FlueGasMaterial, GasLoadChargeMaterial, LiquidLoadChargeMaterial, SolidLiquidFlueGasMaterial, SolidLoadChargeMaterial, AtmosphereSpecificHeat, WallLossesSurface } from '../shared/models/materials';
+import {  FlueGasMaterial, GasLoadChargeMaterial, LiquidLoadChargeMaterial, SolidLiquidFlueGasMaterial, SolidLoadChargeMaterial, AtmosphereSpecificHeat, WallLossesSurface } from '../shared/models/materials';
+import { Motor } from '../shared/models/equipment';
 import { IndexedDbService } from '../indexedDb/indexed-db.service';
 
 declare var db: any;
@@ -25,6 +26,26 @@ export class SuiteDbService {
 
   test() {
     console.log(db);
+  }
+
+  selectMotor() {
+    return db.selectMotor();
+  }
+
+  selectMotorById(id: number) {
+    return db.selectMotorById(id);
+  }
+
+  insertMotor(equipment: Motor) {
+    return db.insertMotor(equipment);
+  }
+
+  updateMotor(equipment: Motor) {
+    return db.updateMotor(equipment);
+  }
+
+  deleteMotor(id: number) {
+    return db.deleteMotor(id);
   }
 
   //volume
@@ -217,6 +238,15 @@ export class SuiteDbService {
       let customSolidLiquidFlueGasses: SolidLiquidFlueGasMaterial[] = results;
       customSolidLiquidFlueGasses.forEach(material => {
         let suiteResult = this.insertSolidLiquidFlueGasMaterial(material);
+      })
+    })
+  }
+
+  initCustomDbEquipment() {
+    this.indexedDbService.getAllMotor().then(results => {
+      let customMotor: Motor[] = results;
+      customMotor.forEach(equipment => {
+        let suiteResult = this.insertMotor(equipment);
       })
     })
   }

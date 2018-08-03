@@ -47,6 +47,9 @@
     <li [ngClass]="{'selected':dashboardView == 'custom-materials'}">
       <span class="sidebar-item" (click)="changeDashboardView('custom-materials')">Custom Materials</span>
     </li>
+    <li [ngClass]="{'selected':dashboardView == 'custom-equipment'}">
+      <span class="sidebar-item" (click)="changeDashboardView('custom-equipment')">Custom Equipment</span>
+    </li>
     <li [ngClass]="{'selected': dashboardView == 'tutorials'}">
       <span class="sidebar-item" (click)="changeDashboardView('tutorials')">Tutorials</span>
     </li>

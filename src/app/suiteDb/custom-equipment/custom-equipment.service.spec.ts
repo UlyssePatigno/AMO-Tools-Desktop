@@ -1,15 +1,15 @@
 import { TestBed, inject } from '@angular/core/testing';
 
-import { CustomMaterialsService } from './custom-materials.service';
+import { CustomEquipmentService } from './custom-equipment.service';
 
 describe('CustomEquipmentService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [CustomMaterialsService]
+      providers: [CustomEquipmentService]
     });
   });
 
-  it('should be created', inject([CustomMaterialsService], (service: CustomMaterialsService) => {
+  it('should be created', inject([CustomEquipmentService], (service: CustomEquipmentService) => {
     expect(service).toBeTruthy();
   }));
 });

@@ -41,6 +41,9 @@
         <div class="col-10 dashboard-scroll scroll-item" *ngIf="allDirectories && dashboardView == 'custom-materials'">
             <app-custom-materials [settings]="workingDirectorySettings"></app-custom-materials>
         </div>
+      <div class="col-10 dashboard-scroll scroll-item" *ngIf="allDirectories && dashboardView == 'custom-equipment'">
+        <app-custom-equipment [settings]="workingDirectorySettings"></app-custom-equipment>
+      </div>
     </div>
 </div>
 

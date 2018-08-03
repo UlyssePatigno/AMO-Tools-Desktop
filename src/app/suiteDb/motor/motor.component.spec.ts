@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { FlueGasMaterialComponent } from './flue-gas-material.component';
+import { MotorComponent } from './motor.component';
 
 describe('MotorComponent', () => {
-  let component: FlueGasMaterialComponent;
-  let fixture: ComponentFixture<FlueGasMaterialComponent>;
+  let component: MotorComponent;
+  let fixture: ComponentFixture<MotorComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ FlueGasMaterialComponent ]
+      declarations: [ MotorComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(FlueGasMaterialComponent);
+    fixture = TestBed.createComponent(MotorComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
