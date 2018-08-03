@@ -48,7 +48,7 @@ import { CalculatorDbService } from '../indexedDb/calculator-db.service';
 import { DeleteDataService } from '../indexedDb/delete-data.service';
 import { CoreService } from './core.service';
 import { CalculatorListComponent } from '../sidebar/calculator-list/calculator-list.component';
-
+import { CustomEquipmentComponent } from '../custom-equipment/custom-equipment.component';
 @NgModule({
   declarations: [
     CoreComponent,
@@ -65,7 +65,8 @@ import { CalculatorListComponent } from '../sidebar/calculator-list/calculator-l
     VersionModalComponent,
     MeasurComponent,
     OpeningTutorialComponent,
-    CalculatorListComponent
+    CalculatorListComponent,
+    CustomEquipmentComponent
   ],
   imports: [
     CommonModule,
